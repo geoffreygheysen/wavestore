@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\Admin\CategoryCrudController;
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\Size;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -44,8 +45,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
         yield MenuItem::linkToCrud('Catégories', 'fa fa-file', Category::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
-        yield MenuItem::linkToCrud('Produits', 'fa fa-file', Product::class);
+        yield MenuItem::linkToCrud('Produits', 'fa fa-th-list', Product::class);
+        yield MenuItem::linkToCrud('Tailles', 'fa fa-file', Size::class);
     }
 }
