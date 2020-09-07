@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\Admin\CategoryCrudController;
 use App\Entity\Category;
 use App\Entity\Comment;
+use App\Entity\Image;
 use App\Entity\Product;
 use App\Entity\Size;
 use App\Entity\User;

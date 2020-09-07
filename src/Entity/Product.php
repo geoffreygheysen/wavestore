@@ -66,9 +66,15 @@ class Product
      */
     private $size;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="product", cascade={"persist"})
+     */
+    private $images;
+
     public function __construct()
     {
         $this->size = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -193,6 +199,37 @@ class Product
     {
         if ($this->size->contains($size)) {
             $this->size->removeElement($size);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getProduct() === $this) {
+                $image->setProduct(null);
+            }
         }
 
         return $this;
