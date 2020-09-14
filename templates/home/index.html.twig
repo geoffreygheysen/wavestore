@@ -1,20 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Home | Wave Store{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="row mb-5">
+        <div class="mx-auto">
+		    <img src="/images/homepage/bg-home.png" class="img-fluid" alt="Responsive image" style="">
+            <div class="carousel-caption align-items-center">
+                <img src="/images/logo/logo-light.svg" height="300" alt="" loading="lazy">
+            </div>
+	    </div>
+    </div>
+	
+    <div class="row my-5">
+        <div class="col-8 mx-auto my-5 text-center">
+            <h5>Welcome to the Wave Store</h5>
+            <hr class="my-4 d-inline-block mx-auto" style="width: 60px;">
+            <p class="display-4 title-playfair mx-auto">Notre projet est de vous habillez de facon eco-responsable inspiré par l’océan, les vagues et le vent.</p>
+	    </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/UwAmp/www/wavestore/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/UwAmp/www/wavestore/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="row no-gutters bg-light py-5">
+        <div class="mx-auto my-auto">
+            <div class="col-6">
+                <h6 class="text-uppercase">eco-responsable</h6>
+                <hr class="d-inline-block mx-auto" style="width: 60px;">   
+                <p style="width: 37em;">Nos t-shirts sont fabriqués en 100% Coton Organique. Lors de la création du coton ils n’utilisent pas de pesticides, d’insecticides, d’herbicides ni de cultures génétiquement modifiées. La production de coton biologique utilise beaucoup moins d’énergie et d’eau que le coton conventionnel. Malheureusement, aujourd’hui, le coton biologique ne représente que 1% de la production mondiale de coton.</p>
+            </div>
+        </div>                  
+        <div class="col-6">
+        <div class="col-8 mx-auto">
+        <img src="/images/homepage/cotton.png" class="img-fluid" alt="Responsive image">
+        </div>
+        </div>
+    </div>
+
+    <div class="row my-5">
+    <div >
+    <h1>Nos derniers articles</h1>
+    </div>
+    </div>
+
+    <!--image link vers store-->
+    <div class="row no-gutters">
+        <div class="col">
+            <div class="card text-white rounded-0">
+            <img class="card-img rounded-0" src="/images/homepage/thumb-man.png" alt="Card image">
+                <div class="card-img-overlay">
+                    <h5 class="card-title title-playfair">Le Store pour les hommes</h5>
+                    <button class="btn btn-outline-light rounded-0">Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white rounded-0">
+            <img class="card-img rounded-0" src="/images/homepage/thumb-access.png" alt="Card image">
+                <div class="card-img-overlay">
+                    <h5 class="card-title title-playfair">Le Store pour les accessoires</h5>
+                    <button class="btn btn-outline-light rounded-0">Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white rounded-0">
+            <img class="card-img rounded-0" src="/images/homepage/thumb-girl.png" alt="Card image">
+                <div class="card-img-overlay">
+                    <h5 class="card-title title-playfair">Le Store pour les femmes</h5>
+                    <button class="btn btn-outline-light rounded-0">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
 {% endblock %}

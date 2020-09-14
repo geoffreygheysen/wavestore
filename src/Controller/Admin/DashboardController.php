@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\Admin\CategoryCrudController;
+use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Image;
@@ -49,6 +50,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Utilisateurs', 'fa fa-users');
             yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-folder-open', User::class);
             yield MenuItem::linkToCrud('Commentaires', 'fa fa-comments', Comment::class);
+            yield MenuItem::linkToCrud('Adresses', 'fa fa-folder-open', Address::class);
 
         yield MenuItem::section('Produits');
             yield MenuItem::linkToCrud('Produits', 'fa fa-folder-open', Product::class);

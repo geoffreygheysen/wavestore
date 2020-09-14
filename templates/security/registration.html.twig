@@ -2,18 +2,25 @@
 
 {% block body %}
 
-<h1>Sign In</h1>
 
-{{ form_start(form) }}
+<div class="container">
+        <div class="row justify-content-center align-items-center my-5" style="height:40em;">
+                <div class="col-4">
+                        <h1>Inscription</h1>
+                        {{ form_start(form) }}
 
-        {{ form_row(form.firstname, {'attr':{'class':'form-control'}}) }}
-        {{ form_row(form.lastname, {'attr':{'class':'form-control'}}) }}
-        {{ form_row(form.sexe, {'label': 'Sexe', 'attr':{'class':'form-control'}}) }}
-        {{ form_row(form.date_of_birth, {'attr':{'class':'form-control'}}) }}
-        {{ form_row(form.email, {'attr':{'class':'form-control'}}) }}
-        {{ form_row(form.password, {'attr':{'class':'form-control'}}) }}
-        {{ form_row(form.confirm_password, {'attr':{'class':'form-control'}}) }}
+                                {{ form_row(form.firstname, {'attr':{'class':'form-control'}}) }}
+                                {{ form_row(form.lastname, {'attr':{'class':'form-control'}}) }}
+                                {{ form_row(form.sexe, {'label': 'Sexe', 'attr':{'class':'form-control'}}) }}
+                                {{ form_row(form.date_of_birth, {'attr':{'class':'form-control'}}) }}
+                                {{ form_row(form.email, {'attr':{'class':'form-control'}}) }}
+                                {{ form_row(form.password, {'attr':{'class':'form-control'}}) }}
+                                {{ form_row(form.confirm_password, {'attr':{'class':'form-control'}}) }}
 
-{{ form_end(form) }}
+                        {{ form_end(form) }}
+
+                </div>
+        </div>
+</div>
 
 {% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    {# <pre>
+        {{ dump(product.images) }}
+    </pre> #}
+
+    <div class="container">
+        <div class="row mt-5">
+
+            <div class="col-8">
+                <div class="row">
+                    {% for image in product.images %}
+                    <div class="col my-1">
+                    <img src="{{ asset('images/products/' ~ image.image) }}" alt="{{ image.image }}" width="700">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-4">
+
+                <h2 class="my-3">{{ product.name }}</h2>
+
+                <h5 class="my-3">{{ product.price }} &euro; <small class="text-muted">TVA incluse</small></h5>
+
+                <p class="my-3"><strong>Catégorie:</strong> {{ product.gender }}, {{product.category}}</p>
+
+                <h5 class="mt-4">Taille</h5>
+                <div class="form-group">
+                    <select class="form-control" id="exampleFormControlSelect1" style="width:6.25em;">
+                        {% for size in sizes %}
+                        <option>{{ size['0'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <h5 class="mt-4">Quantité</h5>
+                <div class="form-group">
+                    <select class="form-control" id="exampleFormControlSelect1" style="width:6.25em;">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                
+                <button type="button" class="btn btn-outline-secondary btn-lg my-4"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg my-4"><i class="far fa-heart"></i></button>
+
+                <div class="accordion" id="accordionExample">
+                <div class="list-group list-group-flush">
+
+                    <div class="list-group-item" id="headingOne">
+                        <a class="text-left text-dark text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <h5>Description</h5>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <p>{{ product.description }}</p>
+                    </div>
+                    </div>
+
+                </div>
+                <div class="list-group list-group-flush">
+
+                    <div class="list-group-item" id="headingTwo">
+                        <a class="text-left collapsed text-dark text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h5>Livraisons et retours</h5>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                    </div>
+
+                </div>
+                <div class="list-group list-group-flush">
+
+                    <div class="list-group-item" id="headingThree">
+                        <a class="text-left collapsed text-dark text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h5>Avis</h5>
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                    </div>
+                </div>
+
+                </div>               
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row bg-light">
+    <h5 class="text-uppercase">vous aimerez peut être aussi</h5>
+    </div>
+
+
+    <a href="{{ path('product_index') }}">back to list</a>
+
+{% endblock %}

@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class UserCrudController extends AbstractCrudController
@@ -29,6 +30,7 @@ class UserCrudController extends AbstractCrudController
                     'femme' => 'femme',
                     ]),
             DateField::new('date_of_birth'),
+            AssociationField::new('addresses'),
         ];
     }
 

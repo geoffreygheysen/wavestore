@@ -1,0 +1,71 @@
+<!-- Section: Sidebar -->
+<section>
+    <!-- Section: Categories -->
+    <div class="mb-5">
+
+      <h6 class="font-weight-bold mb-3">Catégories</h6>
+
+      <div>
+        {% for category in categories %}
+        <p><a href="#">{{ category.name }}</a></p>
+        {% endfor %}
+      </div>
+
+    </div>
+
+    <!-- Section: Size -->
+    <div class="mb-5">
+
+      <h6 class="font-weight-bold mb-3">Size</h6>
+
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2 mb-5" role="group" aria-label="First group">
+        {% for size in sizes %}
+        <button type="button" class="btn btn-outline-secondary">{{ size.name}}</button>
+        {% endfor %}
+      </div>
+      
+    </div>
+
+    <!-- Section: Condition -->
+    <div class="mb-5">
+
+      <h6 class="font-weight-bold mb-3">Condition</h6>
+
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input filled-in" id="new">
+        <label class="form-check-label small text-uppercase card-link-secondary" for="new">New</label>
+      </div>
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input filled-in" id="used">
+        <label class="form-check-label small text-uppercase card-link-secondary" for="used">Used</label>
+      </div>
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input filled-in" id="collectible">
+        <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Collectible</label>
+      </div>
+
+    </div>
+
+    <!-- Section: Price -->
+    <div class="mb-5">
+
+      <h6 class="font-weight-bold mb-3">Prix</h6>
+
+      <div class="form-check mb-3">
+        <input type="radio" class="form-check-input" id="under25" name="materialExampleRadios">
+        <label class="form-check-label small text-uppercase card-link-secondary" for="under25">moins de $25</label>
+      </div>
+      <div class="form-check mb-3">
+        <input type="radio" class="form-check-input" id="2550" name="materialExampleRadios">
+        <label class="form-check-label small text-uppercase card-link-secondary" for="2550">entre $25 et $50</label>
+      </div>
+      <div class="form-check mb-3">
+        <input type="radio" class="form-check-input" id="50100" name="materialExampleRadios">
+        <label class="form-check-label small text-uppercase card-link-secondary" for="50100">plus de $50</label>
+      </div>
+
+    </div>
+
+</section>
+<!-- Section: Sidebar -->

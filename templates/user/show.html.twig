@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile | Wave Store{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row my-5">
+        <h3>Bonjour {{ user.firstname }}</h3>
+        </div>
+        <div class="row my-5">
+            <div class="col-8">
+
+                <div class="card rounded-0">
+                    <div class="card-body">
+                        <h4 class="font-weight-bold">Informations</h4>
+                        <div class="ml-2 mb-4">
+                            <p>{{ user.firstname }}</p>
+                            <p>{{ user.firstname }}</p>
+                            <p>{{ user.dateOfBirth ? user.dateOfBirth|date('Y-m-d') : '' }}</p>
+                            <p>{{ user.sexe }}</p>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="mb-5 text-dark"><i class="fas fa-cog"></i> Modifier</a>
+                        </div>
+                        <h4 class="my-3 font-weight-bold">Détail de connexion</h4>
+                        <div class="ml-2">
+                            <h6 class="mb-3 font-weight-bold">Email</h6>
+                            <p>{{ user.email }}</p>
+                            <h6 class="mb-3 font-weight-bold">Mot de passe</h6>
+                            <p>{{ user.password }}</p>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="text-dark"><i class="fas fa-cog"></i> Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# menu #}
+            <div class="col-4">
+                {% include 'includes/menu-profil.html.twig' %}
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    {# <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Date_of_birth</th>
+                <td>{{ user.dateOfBirth ? user.dateOfBirth|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ user.sexe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+
+    <a href="{{ path('security_logout') }}">Deconnexion</a>
+
+    {{ include('user/_delete_form.html.twig') }} #}
+{% endblock %}

@@ -1,0 +1,17 @@
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        <a href="{{ path('user_show', {'id':app.user.id}) }}" class="my-3 text-dark"><i class="fas fa-info-circle mr-3"></i></i>Mes informations personelles</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ path('address_index') }}" class="mb-3 text-dark"><i class="fas fa-map-marker-alt mr-3"></i></i>Adresses</a>
+    </li>
+    <li class="list-group-item">
+        <a href="#" class="mb-3 text-dark"><i class="fas fa-list mr-3"></i>Historique de commande</a>
+    </li>
+    <li class="list-group-item">
+        <a href="#" class="mb-3 text-dark"><i class="fas fa-heart mr-3"></i>Ma wishlist</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ path('security_logout') }}" class="mb-5 text-dark"><i class="fas fa-sign-out-alt mr-3"></i>Déconnexion</a>
+    </li>
+</ul>

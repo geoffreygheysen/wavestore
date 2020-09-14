@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    {{ form_row(form.firstname, {'label':'Firstname','attr':{'class':'form-control'}}) }}
+    {{ form_row(form.lastname, {'label':'Lastname','attr':{'class':'form-control'}}) }}
+    {{ form_row(form.email, {'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.sexe, {'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.date_of_birth, {'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.password, {'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.newPassword, {'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.confPassword, {'attr':{'class':'form-control'}}) }}
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

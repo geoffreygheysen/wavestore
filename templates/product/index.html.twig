@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Women Store | Wave Store{% endblock %}
+
+{% block body %}
+    {# Section header #}
+    <div class="row">
+        <div class="mx-auto">
+            <img src="/images/store/bg-girl-store.png" class="img-fluid" alt="Responsive image" style="">
+            <div class="carousel-caption">
+                <h1 class="display-1 font-weight-bold">Women's Store</h1>
+                <p class="lead title-playfair mx-auto font-italic">All our products for her</p>
+            </div>
+        </div>
+    </div>
+
+    {# Section title #}
+    <div class="row mb-5 py-5 bg-light">
+        <div class="col-9 mx-auto my-5">
+            <h5>Notre collection pour elles</h5>
+            <hr class="accent-2 my-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p class="display-4 title-playfair">Voici tout nos produits eco-responsable pour les femmes.</p>
+	    </div>
+    </div>
+
+    {# Section article #}
+    <div class="container">
+        <div class="row mt-5 mb-3">
+            {% include 'includes/headbar.html.twig' %}
+            <div class="row">
+                <div class="col-3">
+                    {% include 'includes/sidebar.html.twig' %}
+                </div>
+                <div class="col-9">
+                    <div class="row">
+
+                        {% for product in products %}
+                        <div class="col-4">
+                            <div class="card border-0">
+                                <img src="/images/default/img-default.png" class="card-img-top rounded-0" alt="...">
+                                <div class="card-img-overlay">
+                                    <div class="card-title d-flex justify-content-between">
+                                        <a href="{{ path('product_show', {'id': product.id}) }}" class="text-secondary mr-3"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="card-link text-danger"><i class="far fa-heart"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mt-3 ml-3">
+                                    <h5 class="card-title font-italic">{{ product.name }}</h5>
+                                    <p class="card-text font-weight-bold">{{ product.price }} &euro;</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Section autre store #}
+    <div class="container-fluid bg-light mt-5">
+        <div class="container">
+
+            <div class="text-center pt-5">
+                <h5>Les Store's</h5>
+                <hr class="d-inline-block mx-auto" style="width: 60px;">
+	        </div>
+
+            <div class="row d-flex justify-content-center">
+
+                <div class="col-4 my-5">
+                    <a href="{{ path('product_index') }}">
+                        <div class="card text-white">
+                            <img class="card-img" src="/images/default/img-default.png" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">Men's Store</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-4 my-5">
+                    <a href="{{ path('product_index') }}">
+                        <div class="card text-white">
+                            <img class="card-img" src="/images/default/img-default.png" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">Men's Store</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

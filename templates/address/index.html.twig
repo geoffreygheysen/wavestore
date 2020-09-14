@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Account Settings{% endblock %}
+
+{% block body %}
+{# 
+<pre>
+    {{ dump(addresses) }}
+</pre> #}
+
+    <div class="container">
+
+        <div class="row my-5">
+            <h3>Adresses</h3>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-8">
+                <div class="card rounded-0">
+                    <div class="card-body">
+                        {% for address in addresses %}
+                        <p class="text-muted">Nom - Prenom</p>
+                        <p class="text-muted">{{ address.address }}</p>
+                        <p class="text-muted">{{ address.postalCode }}</p>
+                        <p class="text-muted">{{ address.city }}</p>
+                        <p class="text-muted">{{ address.box }}</p>
+                        <p class="text-muted">{{ address.country }}</p>
+                        <a href="{{ path('address_edit', {'id': address.id}) }}">Modifier</a>
+                        {% else %}
+                        <p>vous n'avez pas encore d'adresse enregistrée</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a href="{{ path('address_new') }}" class="btn btn-dark btn-lg my-5">Ajouter une adresse</a>
+            </div>
+
+            {# menu #}
+            <div class="col-4">
+                {% include 'includes/menu-profil.html.twig' %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

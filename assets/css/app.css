@@ -1,0 +1,32 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.big-title{
+    font-size: 20em;
+    font-weight: bold;
+    color: #F0F0F0;
+}
+
+.inside-title{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25em;
+    line-height: 1.25em;
+    width: 15em;
+}
+
+.title-playfair{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25em;
+    line-height: 1.25em;
+    width: 20em;
+}
+
+.text-playfair{
+    font-family: 'Playfair Display', serif;
+}
+
+.article{
+    background-color: blueviolet;
+}
+

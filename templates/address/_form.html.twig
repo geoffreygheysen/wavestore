@@ -1,0 +1,25 @@
+{{ form_start(form) }}
+<form>
+  <div class="form-group">
+    <label>Adresse</label>
+    {{ form_widget(form.address) }}
+  </div>
+  <div class="form-group">
+    <label>Code postal</label>
+    {{ form_widget(form.postal_code) }}
+  </div>
+  <div class="form-group">
+    <label>Boîte</label>
+    {{ form_widget(form.box) }}
+  </div>
+  <div class="form-group">
+    <label>Ville</label>
+    {{ form_widget(form.city) }}
+  </div>
+  <div class="form-group">
+    <label>Pays</label>
+    {{ form_widget(form.country) }}
+  </div>
+</form>
+<button class="btn btn-outline-dark">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -3,19 +3,18 @@
 {% block body %}
 
     <div class="container">
-        <div class="row justify-content-center my-5">
+        <div class="row justify-content-center align-items-center my-5" style="height:35em;">
             <div class="col-4">
                 <div class="text-center">
                     <form class="form-signin" action="{{ path('security_login') }}" method="post">
-                        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input placeholder="Email" required name="_username" type="text" class="form-control">
+                        <h1 class="h3 mb-3 font-weight-normal my-3">Connexion</h1>
+                        <input placeholder="Email" required name="_username" type="text" class="form-control my-3">
 
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input placeholder="Mot de passe" required name="_password" type="password" class="form-control">
+                        <input placeholder="Mot de passe" required name="_password" type="password" class="form-control my-3">
 
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+                        <button class="btn btn-lg btn-primary btn-block my-3" type="submit">Connexion</button>
                     </form>
+                    <p class="my-3">Pas encore inscris ? Fait le <a href="{{ path('security_registration') }}">Ici</a></p>
                 </div>
             </div>
         </div>
