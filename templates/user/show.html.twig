@@ -18,15 +18,11 @@
                             <p>{{ user.firstname }}</p>
                             <p>{{ user.dateOfBirth ? user.dateOfBirth|date('Y-m-d') : '' }}</p>
                             <p>{{ user.sexe }}</p>
-                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="mb-5 text-dark"><i class="fas fa-cog"></i> Modifier</a>
-                        </div>
-                        <h4 class="my-3 font-weight-bold">Détail de connexion</h4>
-                        <div class="ml-2">
                             <h6 class="mb-3 font-weight-bold">Email</h6>
                             <p>{{ user.email }}</p>
                             <h6 class="mb-3 font-weight-bold">Mot de passe</h6>
                             <p>{{ user.password }}</p>
-                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="text-dark"><i class="fas fa-cog"></i> Modifier</a>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}" class="mb-5 text-dark"><i class="fas fa-cog"></i> Modifier</a>
                         </div>
                     </div>
                 </div>

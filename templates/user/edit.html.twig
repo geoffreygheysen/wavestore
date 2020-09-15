@@ -3,25 +3,30 @@
 {% block title %}Edit User{% endblock %}
 
 {% block body %}
+    
     <div class="container">
+
         <div class="row my-5">
-        <h1>Editer son profile</h1>
+            <h3>Editer son profile</h3>
         </div>
 
         <div class="row my-5">
             <div class="col-8">
-                {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+                <div class="card rounded-0">
+                    <div class="card-body">
+                        {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+                        {{ include('user/_delete_form.html.twig') }}
+                    </div>
+                </div>
             </div>
 
             {# menu #}
             <div class="col-4">
                 {% include 'includes/menu-profil.html.twig' %}
             </div>
-            
+
         </div>
+
     </div>
-
-    {# {{ include('user/_delete_form.html.twig') }} #}
-
     
 {% endblock %}

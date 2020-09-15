@@ -19,13 +19,13 @@
                 <div class="card rounded-0">
                     <div class="card-body">
                         {% for address in addresses %}
-                        <p class="text-muted">Nom - Prenom</p>
+                        <p class="text-muted">{{ address.firstname }} - {{ address.lastname }}</p>
                         <p class="text-muted">{{ address.address }}</p>
                         <p class="text-muted">{{ address.postalCode }}</p>
                         <p class="text-muted">{{ address.city }}</p>
                         <p class="text-muted">{{ address.box }}</p>
                         <p class="text-muted">{{ address.country }}</p>
-                        <a href="{{ path('address_edit', {'id': address.id}) }}">Modifier</a>
+                        <a href="{{ path('address_edit', {'id': address.id}) }}" class="text-dark"><i class="fas fa-cog"></i> Modifier</a>
                         {% else %}
                         <p>vous n'avez pas encore d'adresse enregistrée</p>
                         {% endfor %}
