@@ -28,9 +28,11 @@
 
                 <p class="my-3"><strong>Catégorie:</strong> {{ product.gender }}, {{product.category}}</p>
 
+                <form method="post" action="{{ path('cart_add') }}" accept-charset="UTF-8">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
                 <h5 class="mt-4">Taille</h5>
                 <div class="form-group">
-                    <select class="form-control" id="exampleFormControlSelect1" style="width:6.25em;">
+                    <select class="form-control" name="product_size" required="required" id="exampleFormControlSelect1" style="width:6.25em;">
                         {% for size in sizes %}
                         <option>{{ size['0'] }}</option>
                         {% endfor %}
@@ -39,15 +41,17 @@
 
                 <h5 class="mt-4">Quantité</h5>
                 <div class="form-group">
-                    <select class="form-control" id="exampleFormControlSelect1" style="width:6.25em;">
+                    <select class="form-control" name="product_quantity" required="required" id="exampleFormControlSelect1" style="width:6.25em;">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                     </select>
                 </div>
                 
-                <button type="button" class="btn btn-outline-secondary btn-lg my-4"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                <button type="submit" class="btn btn-outline-secondary btn-lg my-4"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
                 <button type="button" class="btn btn-outline-secondary btn-lg my-4"><i class="far fa-heart"></i></button>
+
+                </form>
 
                 <div class="accordion" id="accordionExample">
                 <div class="list-group list-group-flush">
@@ -73,27 +77,74 @@
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <p>Livraison standard gratuite.</p>
+                        <ul class="">
+                            <li class="mb-3">Temps estimé entre 3 et 5 jours ouvrables en fonction de votre situation géographique.</li>
+                            <li class="mb-3">Vous pouvez retourner votre commande gratuitement, quelle que soit la raison, dans un délai de 60 jours.</li>
+                        </ul>
                     </div>
                     </div>
 
                 </div>
                 <div class="list-group list-group-flush">
-
                     <div class="list-group-item" id="headingThree">
                         <a class="text-left collapsed text-dark text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             <h5>Avis</h5>
                         </a>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
-                        
-                    </div>
+                        <div class="card-body">
+                        {% if app.user %}
+                        <a href="{{ path('comment_new') }}" class="text-dark"><i class="fas fa-comment-medical mr-2"></i>Ajoutez un commentaire</a>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Ajouter un commentaire</button>
+
+                        <!-- Modal -->
+                        <div class="modal-dialog modal-dialog-centered">
+
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Ajoutez un commentaire</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{ render(controller('App\\Controller\\CommentController::new')) }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        </div>
+
+                        {% else %}
+                        <a class="btn btn-outline-dark" href="{{ path('security_login') }}">Ajoutez un commentaire</a>
+                        {% endif %}
+                            <section>
+                                {% for comment in product.comments %}
+                                <div class="card rounded-0 mt-3">
+                                    <blockquote class="blockquote mb-0 card-body">
+                                    <small>{{ comment.comment }}</small>
+                                    <footer class="blockquote-footer">
+                                        <small class="text-muted">
+                                        <p><em class"text-italic">écrit par </em>{{ comment.user.firstname }} {{ comment.user.lastname }}</p>
+                                        </small>
+                                    </footer>
+                                    </blockquote>
+                                </div>
+                                {% endfor %}
+                            </section>
+                        </div>
                     </div>
                 </div>
-
-                </div>               
-
+                </div>
             </div>
         </div>
     </div>

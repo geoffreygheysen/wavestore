@@ -2,15 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
-use App\Entity\Product;
 use App\Entity\Size;
+use App\Entity\Comment;
+use App\Entity\Product;
+use App\Data\SearchData;
+use App\Entity\Category;
+use App\Form\CommentType;
+use App\Form\SearchForm;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/product")
@@ -20,18 +24,25 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="product_index", methods={"GET"})
      */
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, Request $request): Response
     {
-        $sizeRepository = $this->getDoctrine()->getManager()->getRepository(Size::class);
-        $sizes = $sizeRepository->findAll();
+        // $sizeRepository = $this->getDoctrine()->getManager()->getRepository(Size::class);
+        // $sizes = $sizeRepository->findAll();
 
-        $categoryRepository = $this->getDoctrine()->getManager()->getRepository(Category::class);
-        $categories = $categoryRepository->findAll();
+        // $categoryRepository = $this->getDoctrine()->getManager()->getRepository(Category::class);
+        // $categories = $categoryRepository->findAll();
+
+
+        $data = new SearchData();
+        $form = $this->createForm(SearchForm::class, $data);
+        $form-> handleRequest($request);
+        $products = $productRepository->findSearch($data);
 
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAll(),
-            'sizes' => $sizes,
-            'categories' => $categories,
+            'products' => $products,
+            'form' => $form->createView(),
+            // 'sizes' => $sizes,
+            // 'categories' => $categories,
         ]);
     }
 
@@ -59,7 +70,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_show", methods={"GET"})
+     * @Route("/{id}", name="product_show", methods={"GET", "POST"})
      */
     public function show(Product $product): Response
     {
@@ -71,8 +82,6 @@ class ProductController extends AbstractController
         foreach($product->getSize() as $s) {
             $si[$s->getName()][]= $s->getName();
         }
-
-        // var_dump($si);
 
         return $this->render('product/show.html.twig', [
             'product' => $product,

@@ -1,0 +1,18 @@
+<div class="col-4">
+    <div class="card border-0">
+        <img src="/images/default/img-default.png" class="card-img-top rounded-0" alt="...">
+        <div class="card-img-overlay">
+            <div class="card-title d-flex justify-content-between">
+                <a href="{{ path('product_show', {'id': product.id}) }}" class="text-secondary mr-3"><i class="fas fa-eye"></i></a>
+                <a href="#" class="card-link text-danger"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+        <div class="mt-3 ml-3">
+            <h5 class="card-title font-italic">{{ product.name }}</h5>
+            <p class="card-text font-weight-bold">{{ product.price }} &euro;</p>
+            {% for c in product.category %}
+                <p class="card-text font-weight-bold">{{ c.name }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
