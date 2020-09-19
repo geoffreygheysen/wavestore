@@ -33,6 +33,7 @@ class ProductCrudController extends AbstractCrudController
                     '' => '',
                     'homme' => 'homme',
                     'femme' => 'femme',
+                    'accessoire' => 'accessoire',
                     ]),
             AssociationField::new('size'),
             NumberField::new('price'),

@@ -32,41 +32,66 @@ class User implements UserInterface
      * @Assert\Email()
      */
     private $email;
-
+ 
     /**
      * @ORM\Column(type="json")
+     * @Assert\NotBlank
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\Length(min="8", minMessage="Votre mdp doit faire minimum 8 caractère")
+     * @Assert\NotBlank
+     * @Assert\Length(min="6", minMessage="Votre mdp doit faire minimum 8 caractère")
+     * @Assert\Regex(pattern = "/\d/", message="Votre mot de passe doit contenir au moins un nombre")
+     * @Assert\Regex(pattern = "/[A-Z]+/", message="Votre mot de passe doit contenir au moins une majuscule")
      */
     private $password;
 
     /**
-     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas taper le meme mdp")
+     * @Assert\NotBlank
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas rentrer le même mot de passe")
      */
     public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage="Plus de 2 caractères",
+     *      maxMessage="Pas plus de 30 caractères"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage="Plus de 2 caractères",
+     *      maxMessage="Pas plus de 30 caractères"
+     * )
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
      */
     private $date_of_birth;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
+     * @Assert\Choice(
+     *     choices = { "homme", "femme" },
+     *     message = "Choisissez un sexe valid"
+     * )
      */
     private $sexe;
 

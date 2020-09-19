@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 
 class AddressType extends AbstractType
 {
@@ -54,7 +55,7 @@ class AddressType extends AbstractType
                     'class' => 'form-control mb-3',
                 ],
             ])
-            ->add('country', TextType::class, [
+            ->add('country', CountryType::class, [
                 'label' => "Pays",
                 'attr' => [
                     'class' => 'form-control mb-3',

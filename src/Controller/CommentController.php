@@ -26,6 +26,7 @@ class CommentController extends AbstractController
     }
 
     /**
+     * 
      * @Route("/new", name="comment_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -35,6 +36,9 @@ class CommentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // setter les champs produit et user
+
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();

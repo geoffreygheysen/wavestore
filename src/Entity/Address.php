@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AddressRepository::class)
@@ -19,12 +20,15 @@ class Address
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $address;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Regex("/^[0-9]{4}+/")
+     * @Assert\NotBlank
      */
     private $postal_code;
 
@@ -34,11 +38,20 @@ class Address
     private $box;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage="Plus de 2 caractères",
+     *      maxMessage="Pas plus de 30 caractères"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $city;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Country
      * @ORM\Column(type="string", length=255)
      */
     private $country;
@@ -50,11 +63,25 @@ class Address
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage="Plus de 2 caractères",
+     *      maxMessage="Pas plus de 30 caractères"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage="Plus de 2 caractères",
+     *      maxMessage="Pas plus de 30 caractères"
+     * )
      */
     private $lastname;
 

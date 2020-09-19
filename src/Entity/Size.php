@@ -6,6 +6,7 @@ use App\Repository\SizeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SizeRepository::class)
@@ -22,6 +23,13 @@ class Size
 
     /**
      * @ORM\Column(type="string", length=4)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 4,
+     *      minMessage="Plus de 1 caractères",
+     *      maxMessage="Pas plus de 4 caractères"
+     * )
      */
     private $name;
 

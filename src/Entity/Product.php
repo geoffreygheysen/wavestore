@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -22,6 +23,13 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 20,
+     *      minMessage="Plus de 5 caractères",
+     *      maxMessage="Pas plus de 20 caractères"
+     * )
      */
     private $name;
 
@@ -32,21 +40,37 @@ class Product
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 50,
+     *      max = 300,
+     *      minMessage="Plus de 50 caractères",
+     *      maxMessage="Pas plus de 300 caractères"
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
+     * @Assert\Choice(
+     *     choices = { "homme", "femme", "accessoire" },
+     *     message = "Choisissez un genre valide"
+     * )
      */
     private $gender;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank
+     * @Assert\Positive
      */
     private $price;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank
+     * @Assert\Positive
      */
     private $price_htva;
 
@@ -58,16 +82,19 @@ class Product
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $category;
 
     /**
      * @ORM\ManyToMany(targetEntity=Size::class, inversedBy="products")
+     * @Assert\NotBlank
      */
     private $size;
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="product", cascade={"persist"})
+     * @Assert\NotBlank
      */
     private $images;
 

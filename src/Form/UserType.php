@@ -47,8 +47,8 @@ class UserType extends AbstractType
             ->add('sexe', ChoiceType::class, [
                 'choices'  => [
                     'Veuillez choisir' => null,
-                    'Homme' => 'homme',
-                    'Femme' => 'femme',
+                    'homme' => 'homme',
+                    'femme' => 'femme',
                 ],
                 'attr' => [
                     'class' => 'form-control mb-3',

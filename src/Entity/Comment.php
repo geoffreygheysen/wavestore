@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -20,13 +21,15 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 100,
+     *      minMessage="Plus de 2 caractères",
+     *      maxMessage="Pas plus de 100 caractères"
+     * )
      */
     private $comment;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $approved;
 
     /**
      * @ORM\Column(type="datetime")
@@ -59,18 +62,6 @@ class Comment
     public function setComment(string $comment): self
     {
         $this->comment = $comment;
-
-        return $this;
-    }
-
-    public function getApproved(): ?bool
-    {
-        return $this->approved;
-    }
-
-    public function setApproved(bool $approved): self
-    {
-        $this->approved = $approved;
 
         return $this;
     }
