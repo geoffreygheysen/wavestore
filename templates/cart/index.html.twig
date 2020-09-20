@@ -4,42 +4,16 @@
 
 {% block body %}
 <div class="container">
-    <h1 class="my-5">Votre Panier</h1>
+    <h1 class="my-5">Panier</h1>
     <div class="row my-5">
         <div class="col-8">
             <div class="row">
                 {% if cart.items | length >0 %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Produit</th>
-                            <th>Prix</th>
-                            <th>Quantité</th>
-                            <th>Total</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
                     {% for item in cart.items %}
-                    <tr>
-                        <td>{{ item.product.name }}</td>
-                        <td>{{ item.product.price }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.product.price * item.quantity }}</td>
-                        <td>
-                            <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                        </tr>
+                    <ul class="list-group list-group-flush">
+                        {% include 'cart/_card.html.twig' with {item: item} only %}
+                    </ul>
                     {% endfor %}
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="3">Total: </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tfoot>
-                </table>
                 {% else %}
                     <p>Votre panier est vide</p>
                 {% endif %}
@@ -48,13 +22,28 @@
         <div class="col-4">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <h5>Récapitulatif</h5>
-                    <p>...</p>
-                    <p>...</p>
-                    <p>...</p>
+                    <div class="row mb-4">
+                        <h5>Récapitulatif</h5>
+                    </div>
+                    <div class="row d-flex justify-content-between">
+                        <p>Nombres d'articles</p>
+                        <p>0</p>
+                    </div>
+                    <div class="row d-flex justify-content-between">
+                        <p>Sous-total</p>
+                        <p>0,00 &euro;</p>
+                    </div>
                 </li>
                 <li class="list-group-item">
-                    <button type="button" class="btn btn-dark">Passer commande</button>
+                    <div class="row d-flex justify-content-between">
+                        <p>Total</p>
+                        <p>0,00 &euro;</p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row d-flex justify-content-between">
+                        <button type="button" class="btn btn-dark">Paiment</button>
+                    </div>
                 </li>
             </ul>
         </div>

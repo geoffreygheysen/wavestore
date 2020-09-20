@@ -2,13 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Size;
 use App\Entity\Comment;
 use App\Entity\Product;
 use App\Data\SearchData;
 use App\Entity\Category;
+use App\Form\SearchType;
 use App\Form\CommentType;
-use App\Form\SearchForm;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,21 +21,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("/", name="product_index", methods={"GET", "POST"})
      */
     public function index(ProductRepository $productRepository, Request $request): Response
     {
-        // $sizeRepository = $this->getDoctrine()->getManager()->getRepository(Size::class);
-        // $sizes = $sizeRepository->findAll();
+        $data = new SearchData();
+        $form = $this->createForm(SearchType::class, $data);
 
-        // $categoryRepository = $this->getDoctrine()->getManager()->getRepository(Category::class);
-        // $categories = $categoryRepository->findAll();
-
+        $form->handleRequest($request);
+        // dd($data);
+        $products = $productRepository->findSearch($data);
 
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAll(),
-            // 'sizes' => $sizes,
-            // 'categories' => $categories,
+            'products' => $products,
+            'form' => $form->createView(),
         ]);
     }
 

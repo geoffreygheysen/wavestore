@@ -29,7 +29,7 @@
             {% include 'includes/headbar.html.twig' %}
             <div class="row">
                 <div class="col-3">
-                    <a href="{{ path('search_item')}}" class="btn btn-outline-secondary">Filtrer</a>
+                    {% include 'product/_filter.html.twig' with {form: form} only %}
                 </div>
                 <div class="col-9">
                     <div class="row">
