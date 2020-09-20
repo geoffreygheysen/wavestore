@@ -110,6 +110,11 @@ class User implements UserInterface
      */
     private $cart;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Whishlist::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $whishlist;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
@@ -273,11 +278,6 @@ class User implements UserInterface
         return $this;
     }
 
-    // public function __toString()
-    // {
-    //     return $this->getFirstName().' '.$this->getLastname();
-    // }
-
     /**
      * @return Collection|Comment[]
      */
@@ -329,6 +329,22 @@ class User implements UserInterface
 
         return $this;
     }
-    
+
+    public function getWhishlist(): ?Whishlist
+    {
+        return $this->whishlist;
+    }
+
+    public function setWhishlist(Whishlist $whishlist): self
+    {
+        $this->whishlist = $whishlist;
+
+        // set the owning side of the relation if necessary
+        if ($whishlist->getUser() !== $this) {
+            $whishlist->setUser($this);
+        }
+
+        return $this;
+    }
 
 }

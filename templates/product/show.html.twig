@@ -28,29 +28,30 @@
 
                 <p class="my-3"><strong>Catégorie:</strong> {{ product.gender }}, {{product.category}}</p>
 
-                <form method="post" action="{{ path('cart_add') }}" accept-charset="UTF-8">
+                <form method="post" action="{{ path('cart_add', {'id': product.id}) }}" accept-charset="UTF-8">
                 <input type="hidden" name="product_id" value="{{ product.id }}">
-                <h5 class="mt-4">Taille</h5>
-                <div class="form-group">
-                    <select class="form-control" name="product_size" required="required" id="exampleFormControlSelect1" style="width:6.25em;">
-                        {% for size in sizes %}
-                        <option>{{ size['0'] }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
 
-                <h5 class="mt-4">Quantité</h5>
-                <div class="form-group">
-                    <select class="form-control" name="product_quantity" required="required" id="exampleFormControlSelect1" style="width:6.25em;">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="btn btn-outline-secondary btn-lg my-4"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg my-4"><i class="far fa-heart"></i></button>
+                    <h5 class="mt-4">Taille</h5>
+                    <div class="form-group">
+                        <select class="form-control" name="product_size" required="required" id="exampleFormControlSelect1" style="width:6.25em;">
+                            {% for size in sizes %}
+                            <option>{{ size['0'] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
+                    <h5 class="mt-4">Quantité</h5>
+                    <div class="form-group">
+                        <select class="form-control" name="product_quantity" required="required" id="exampleFormControlSelect1" style="width:6.25em;">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-outline-secondary btn-lg my-4"><i class="fas fa-cart-plus"></i> Ajouter au panier</button>
+                    <a href="{{ path('whishlist_add', {'id': product.id}) }}" class="btn btn-outline-secondary btn-lg my-4"><i class="far fa-heart"></i></a>
                 </form>
 
                 <div class="accordion" id="accordionExample">
@@ -113,6 +114,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                {# rendre un formulaire d'un autre Controller #}
                                 {{ render(controller('App\\Controller\\CommentController::new')) }}
                             </div>
                             <div class="modal-footer">

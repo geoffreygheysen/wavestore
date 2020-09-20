@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\CartItem;
 use App\Entity\Cart;
 use App\Entity\Product;
-use App\Helper\CartHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,9 +27,9 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/cart/add", name="cart_add")
+     * @Route("/cart/add/{id}", name="cart_add", methods={"GET","POST"})
      */
-    public function add()
+    public function add($id)
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
@@ -55,7 +54,7 @@ class CartController extends AbstractController
 
         $item = new CartItem();
         
-        $product = $repository->findOneBy(['id' => $_POST['product_id']]);
+        $product = $repository->find($id);
 
         //TODO Vérifier produit existe
 
@@ -71,6 +70,14 @@ class CartController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('cart_index');
+
+    }
+
+    /**
+     * @Route("/cart/remove/", name="cart_remove")
+     */
+    public function remove()
+    {
 
     }
 
