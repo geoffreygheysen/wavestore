@@ -30,7 +30,9 @@ class ProductController extends AbstractController
 
         $form->handleRequest($request);
         // dd($data);
-        $products = $productRepository->findSearch($data);
+        $products = $productRepository->findCategory($data);
+        $products = $productRepository->findSize($data);
+        // dd($products);
 
         return $this->render('product/index.html.twig', [
             'products' => $products,

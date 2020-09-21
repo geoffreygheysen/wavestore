@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Data\SearchData;
 use App\Entity\Category;
+use App\Entity\Size;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,6 +22,19 @@ class SearchType extends AbstractType
                 'class' => Category::class,
                 'expanded' => true,
                 'multiple' => true,
+                'attr' => [
+                    'class' => ''
+                ],
+            ])
+            ->add('sizes', EntityType::class, [
+                'label' => false,
+                'required' => false,
+                'class' => Size::class,
+                'expanded' => true,
+                'multiple' => true,
+                'attr' => [
+                    'class' => ''
+                ],
             ])
         ;
     }

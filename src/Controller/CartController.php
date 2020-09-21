@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\CartItem;
 use App\Entity\Cart;
 use App\Entity\Product;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\CartItem;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CartController extends AbstractController
 {
@@ -74,12 +76,21 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/cart/remove/", name="cart_remove")
+     * @Route("/cart/remove/{id}", name="cart_remove", methods={"GET","POST"})
      */
-    public function remove()
+    public function remove($id)
     {
-
+        $user = $this->getUser();
+        $cart = $user->getCart();
+        dd($cart);
     }
 
+    // /**
+    //  * @Route("/cart/pay", name="cart_pay")
+    //  */
+    // public function pay(Request $request): Response 
+    // {
+    //     //Payer
+    // }
     
 }

@@ -24,7 +24,7 @@ class ProductRepository extends ServiceEntityRepository
      * Récupere les produits en lien avec une recherche
      * @return Product[]
      */
-    public function findSearch(SearchData $search): array
+    public function findCategory(SearchData $search): array
     {
         $query = $this
             ->createQueryBuilder('p')
@@ -35,6 +35,27 @@ class ProductRepository extends ServiceEntityRepository
                 $query = $query
                     ->andWhere('c.id IN (:categories)')
                     ->setParameter('categories', $search->categories);
+            }
+
+            return $query->getQuery()->getResult();
+        ;
+    }
+
+    /**
+     * Récupere les produits en lien avec une recherche
+     * @return Product[]
+     */
+    public function findSize(SearchData $search): array
+    {
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('s', 'p')
+            ->join('p.size', 's');
+
+            if(!empty($search->sizes)) {
+                $query = $query
+                    ->andWhere('s.id IN (:sizes)')
+                    ->setParameter('sizes', $search->sizes);
             }
 
             return $query->getQuery()->getResult();

@@ -1,8 +1,11 @@
 {{ form_start(form) }}
 
-    <h4>Categories</h4>
+    <h5 class="mb-3">Categories</h5>
     {{ form_row(form.categories) }}
 
-    <button type="submit" class="btn btn-outline-dark w-100">Filtrer</button>
+    <h5 class="my-3">Tailles</h5>
+    {{ form_row(form.sizes) }}
+
+    <button type="submit" class="btn btn-outline-dark w-100 my-5">Filtrer</button>
 
 {{ form_end(form) }}
