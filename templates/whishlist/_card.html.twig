@@ -1,9 +1,9 @@
 <div class="col-3 mb-4">
     <div class="card rounded-0 text-white">
-        <img src="/images/default/img-default.png" class="card-img rounded-0" alt="...">
+        <img src="{{ asset('images/products/' ~ item.product.images[0]) }}" alt="" class="card-img-top rounded-0">
         <div class="card-img-overlay d-flex justify-content-between">
             <h5 class="card-title">{{ item.product.name }}</h5>
-            <a href="#" class="card-link text-danger"><i class="far fa-trash-alt"></i></a>
+            <a href="{{ path('whishlist_remove', {'id': item.id}) }}" class="card-link text-danger"><i class="far fa-trash-alt"></i></a>
         </div>
     </div>
 </div>

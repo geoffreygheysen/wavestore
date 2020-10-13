@@ -8,20 +8,20 @@
         <div class="mx-auto">
 		    <img src="/images/homepage/bg-home.png" class="img-fluid" alt="Responsive image" style="">
             <div class="carousel-caption align-items-center">
-                <img src="/images/logo/logo-light.svg" height="300" alt="" loading="lazy">
-            </div>
-	    </div>
-    </div>
-	
-    <div class="row my-5">
-        <div class="col-8 mx-auto my-5 text-center">
-            <h5>Welcome to the Wave Store</h5>
-            <hr class="my-4 d-inline-block mx-auto" style="width: 60px;">
-            <p class="display-4 title-playfair mx-auto">Notre projet est de vous habillez de facon eco-responsable inspiré par l’océan, les vagues et le vent.</p>
-	    </div>
+                <p class="display-4 floating"><i class="fas fa-arrow-down"></i></p>
+	        </div>
+        </div>
     </div>
 
-    <div class="row no-gutters bg-light py-5">
+    <div class="row my-5">
+        <div class="col-8 mx-auto my-5 text-center">
+            <h5>Bienvenue sur Wave Store</h5>
+            <hr class="my-4 d-inline-block mx-auto" style="width: 60px;">
+            <p class="display-4 title-playfair mx-auto">Notre projet est de vous habillez de facon eco-responsable inspiré par l’océan, les vagues et le vent.</p>
+        </div>
+    </div>
+
+    <div class="row no-gutters mt-5" style="background-color: #FAFAFA;">
         <div class="mx-auto my-auto">
             <div class="col-6">
                 <h6 class="text-uppercase">eco-responsable</h6>
@@ -30,16 +30,28 @@
             </div>
         </div>                  
         <div class="col-6">
-        <div class="col-8 mx-auto">
-        <img src="/images/homepage/cotton.png" class="img-fluid" alt="Responsive image">
-        </div>
+            <img src="/images/homepage/homecotton.png" class="img-fluid" alt="Responsive image">
         </div>
     </div>
 
-    <div class="row my-5">
-    <div >
-    <h1>Nos derniers articles</h1>
-    </div>
+    <div class="container-fluid">
+        <div class="row mt-5 mb-2">
+            <h4 class="ml-3">Nos derniers articles</h4>
+        </div>
+        <div class="row d-flex justify-content-center">
+            {% for product in products %}
+                <div class="col-3 mb-5">
+                    <div class="card border-0">
+                        <img src="{{ asset('images/products/' ~ product.images[0]) }}" alt="" class="card-img-top rounded-0">
+                        <div class="card-img-overlay">
+                            <div class="card-title d-flex justify-content-between">
+                                <a href="{{ path('product_show', {'id': product.id}) }}" class="text-secondary mr-3"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     <!--image link vers store-->

@@ -29,7 +29,7 @@
             {% include 'includes/headbar.html.twig' %}
             <div class="row">
                 <div class="col-3">
-                    {% include 'product/_filter.html.twig' with {form: form} only %}
+                    {% include 'product/_filter.html.twig' with {form: form, post: post} only %}
                 </div>
                 <div class="col-9">
                     <div class="row">
@@ -47,29 +47,29 @@
         <div class="container">
 
             <div class="text-center pt-5">
-                <h5>Les Store's</h5>
+                <h5>Les Shop</h5>
                 <hr class="d-inline-block mx-auto" style="width: 60px;">
 	        </div>
 
             <div class="row d-flex justify-content-center">
 
-                <div class="col-4 my-5">
+                <div class="col-4 mb-5">
                     <a href="{{ path('product_index') }}">
                         <div class="card text-white">
                             <img class="card-img" src="/images/default/img-default.png" alt="Card image">
                             <div class="card-img-overlay">
-                                <h5 class="card-title">Men's Store</h5>
+                                <h5 class="card-title">Shop homme</h5>
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <div class="col-4 my-5">
+                <div class="col-4 mb-5">
                     <a href="{{ path('product_index') }}">
                         <div class="card text-white">
                             <img class="card-img" src="/images/default/img-default.png" alt="Card image">
                             <div class="card-img-overlay">
-                                <h5 class="card-title">Men's Store</h5>
+                                <h5 class="card-title">Shop femme</h5>
                             </div>
                         </div>
                     </a>

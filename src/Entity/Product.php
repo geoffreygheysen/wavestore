@@ -26,7 +26,7 @@ class Product
      * @Assert\NotBlank
      * @Assert\Length(
      *      min = 5,
-     *      max = 20,
+     *      max = 50,
      *      minMessage="Plus de 5 caractères",
      *      maxMessage="Pas plus de 20 caractères"
      * )

@@ -41,7 +41,7 @@ class CartController extends AbstractController
         $user = $this->getUser();
         $cart = $user->getCart();
 
-        //Si le user n'a pas de panier, il en crée vite un
+        //Si le user n'a pas de panier, il en crée un
         if (null === $cart){
             $userCart = new Cart();
             $user->setCart($userCart);
@@ -80,17 +80,28 @@ class CartController extends AbstractController
      */
     public function remove($id)
     {
-        $user = $this->getUser();
-        $cart = $user->getCart();
-        dd($cart);
-    }
+         $user = $this->getUser();
+         $cart = $user->getCart();
+         $items = $cart->getItems();
 
-    // /**
-    //  * @Route("/cart/pay", name="cart_pay")
-    //  */
-    // public function pay(Request $request): Response 
-    // {
-    //     //Payer
-    // }
-    
+         $entityManager = $this->getDoctrine()->getManager();
+         $repository = $this->getDoctrine()->getManager()->getRepository(CartItem::class);
+         $itemToRemove = $repository->findOneById($id);
+
+         //dd($items);
+
+         if (null === $itemToRemove) {
+             //TODO Error not found
+            return $this->redirectToRoute('cart_index');
+         }
+
+         $cart->removeItem($itemToRemove);
+
+        $entityManager->persist($cart);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('cart_index');
+
+         //dd($cart);
+    }
 }

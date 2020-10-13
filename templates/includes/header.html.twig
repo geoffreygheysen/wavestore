@@ -1,24 +1,29 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header class="topbar">
+        <div style="background-color: #232323;">
+            <p class="mb-0 py-2 small-text-topbar">Ce site propose des produits 100% éco-responsable <i class="fas fa-leaf text-success"></i></p>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FAFAFA;">
         <a class="navbar-brand ml-5" href="{{ path('home') }}">
-            <img src="/images/logo/logo.svg" height="50" alt="" loading="lazy">
+            <img src="/images/logo/logo.svg" height="40" alt="" loading="lazy">
         </a>
             
         <div class="collapse navbar-collapse mr-5" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="{{ path('home') }}">Home</a>
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item mx-3 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Store</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('product_index') }}">Men's Store</a>
-                        <a class="dropdown-item" href="{{ path('product_index') }}">Women's Store</a>
-                        <a class="dropdown-item" href="{{ path('product_index') }}">Accesories Store</a>
+                        <a class="dropdown-item" href="{{ path('product_index') }}">Homme</a>
+                        <a class="dropdown-item" href="{{ path('product_index') }}">Femme</a>
+                        <a class="dropdown-item" href="{{ path('product_index') }}">Accessoire</a>
                     </div>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="{{ path('about') }}">About</a>
+                    <a class="nav-link" href="{{ path('about') }}">A propos</a>
                 </li>
                 <li class="nav-item mr-4 ml-2">
                     <a class="nav-link" href="{{ path('contact') }}">Contact</a>
@@ -43,4 +48,3 @@
             </ul>
         </div>
     </nav>
-</header>

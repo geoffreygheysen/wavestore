@@ -28,7 +28,7 @@
 </div>
 <p>Quantité: {{ item.quantity }}</p>
 <p>Taille: ...</p>
-<a href="#" class="text-dark"><i class="fas fa-trash-alt mr-2"></i>Supprimer</a>
+<a href="{{ path('cart_remove', {'id': item.id}) }}" class="text-dark"><i class="fas fa-trash-alt mr-2"></i>Supprimer</a>
 </div>
 </div>
 </li>

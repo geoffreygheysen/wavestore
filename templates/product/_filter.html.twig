@@ -1,11 +1,23 @@
-{{ form_start(form) }}
+<form action="/product/" method="post">
 
     <h5 class="mb-3">Categories</h5>
-    {{ form_row(form.categories) }}
+
+    {% for item in form.categories %}
+        <div>       
+            <input type="checkbox" id="{{ 'category_' ~ item.id }}" name="categories[]" value="{{ item.id }}" {% if item.id in post.categories %}checked{% endif %}>
+            <label for="{{ 'category_' ~ item.id }}">{{ item.name }}</label>
+        </div>       
+    {% endfor %}
 
     <h5 class="my-3">Tailles</h5>
-    {{ form_row(form.sizes) }}
 
+    {% for item in form.sizes %}
+        <div>       
+            <input type="checkbox" id="{{ 'size_' ~ item.id }}" name="sizes[]" value="{{ item.id }}" {% if item.id in post.sizes %}checked{% endif %}>
+            <label for="{{ 'size_' ~ item.id }}">{{ item.name }}</label>
+        </div>       
+    {% endfor %}
+    
     <button type="submit" class="btn btn-outline-dark w-100 my-5">Filtrer</button>
 
-{{ form_end(form) }}
+</form>

@@ -68,4 +68,12 @@ class WhishlistController extends AbstractController
 
         return $this->redirectToRoute('whishlist_index');
     }
+
+    /**
+     * @Route("/whishlist/remove/{id}", name="whishlist_remove", methods={"GET","POST"})
+     */
+    public function removeItem($id)
+    {
+
+    }
 }

@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Product;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/comment")
@@ -29,22 +31,29 @@ class CommentController extends AbstractController
      * 
      * @Route("/new", name="comment_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Product $product): Response
     {
         $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
+        $form = $this->createForm(CommentType::class, $comment, [
+            'action' => $this->generateUrl('product_show', [
+                'id' => $product->getId()
+                ])
+            ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // setter les champs produit et user
-
+            $comment->setUser($this->getUser());
+            $comment->setProduct($product);
+            $comment->setCreatedAt(new \DateTime());
             
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
-
-            return $this->redirectToRoute('comment_index');
         }
+
+        //return new JsonResponse();
 
         return $this->render('comment/_form.html.twig', [
             'comment' => $comment,

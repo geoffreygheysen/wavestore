@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
+use App\Entity\Size;
 use App\Entity\Product;
 use App\Data\SearchData;
 use App\Entity\Category;
@@ -25,18 +25,37 @@ class ProductController extends AbstractController
      */
     public function index(ProductRepository $productRepository, Request $request): Response
     {
-        $data = new SearchData();
-        $form = $this->createForm(SearchType::class, $data);
+        //$data = new SearchData();
+        //$form = $this->createForm(SearchType::class, $data);
 
-        $form->handleRequest($request);
-        // dd($data);
-        $products = $productRepository->findCategory($data);
-        $products = $productRepository->findSize($data);
-        // dd($products);
+        // $form->handleRequest($request);
+        //$products = $productRepository->findCategory($data);
+        //$products = $productRepository->findSize($data);
+
+        $post_categories = isset($_POST['categories']) ? $_POST['categories'] : null;
+        $post_sizes = isset($_POST['sizes']) ? $_POST['sizes'] : null;
+
+        $productRepository = $this->getDoctrine()->getManager()->getRepository(Product::class);
+
+        if (null === $post_categories && null === $post_sizes) {
+            $products = $productRepository->findAll();
+        } else {
+            $products = $productRepository->findByCategoriesAndSizes($post_categories, $post_sizes);
+        }
+
+        $categoryRepository = $this->getDoctrine()->getManager()->getRepository(Category::class);
+        $form['categories'] = $categoryRepository->findAll();
+
+        $sizeRepository = $this->getDoctrine()->getManager()->getRepository(Size::class);
+        $form['sizes'] = $sizeRepository->findAll();
 
         return $this->render('product/index.html.twig', [
             'products' => $products,
-            'form' => $form->createView(),
+            'form' => $form,
+            'post' => [
+                'categories' => $post_categories,
+                'sizes' => $post_sizes
+            ]
         ]);
     }
 
@@ -66,7 +85,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}", name="product_show", methods={"GET", "POST"})
      */
-    public function show(Product $product): Response
+    public function show($id, Product $product): Response
     {
         $categoryRepository = $this->getDoctrine()->getManager()->getRepository(Category::class);
         $categories = $categoryRepository->findAll();

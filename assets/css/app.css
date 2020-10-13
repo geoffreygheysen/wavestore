@@ -5,7 +5,7 @@ body{
 .big-title{
     font-size: 18em;
     font-weight: bold;
-    color: #F0F0F0;
+    color: #F9F9F9;
     position:relative;
     text-transform: uppercase;
 }
@@ -37,3 +37,23 @@ body{
     background-color: blueviolet;
 }
 
+.small-text-topbar {
+    font-size: 0.875em;
+    text-align: center;
+    color: #EAEAEA;
+}
+
+.floating {  
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }    
+}
