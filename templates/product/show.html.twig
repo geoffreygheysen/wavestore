@@ -112,7 +112,7 @@
                                     <small>{{ comment.comment }}</small>
                                     <footer class="blockquote-footer">
                                         <small class="text-muted">
-                                        <p><em class"text-italic">écrit par </em>{{ comment.user.firstname }} {{ comment.user.lastname }}</p>
+                                        <p><em class"text-italic">écrit par </em>{{ comment.user.firstname }} {{ comment.user.lastname }}<em class"text-italic"> le </em>{{ comment.createdAt|date('d-m-Y') }}</p>
                                         </small>
                                     </footer>
                                     </blockquote>
@@ -125,13 +125,6 @@
                 </div>
             </div>
         </div>
+        <a href="{{ path('product_index') }}" class="btn btn-dark my-5">Retour au catalogue</a>
     </div>
-
-    <div class="row bg-light">
-    <h5 class="text-uppercase">vous aimerez peut être aussi</h5>
-    </div>
-
-
-    <a href="{{ path('product_index') }}">back to list</a>
-
 {% endblock %}

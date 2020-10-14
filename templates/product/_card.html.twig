@@ -1,14 +1,8 @@
-{# <pre>
-    {{ dump(product.images[0]) }}
-</pre> #}
 <div class="col-6 mb-3">
     <div class="card border-0">
-
-            <div class="col my-1">
+        <div class="col my-1">
             <img src="{{ asset('images/products/' ~ product.images[0]) }}" alt="" class="card-img-top rounded-0">
-            </div>
-
-        {# <img src="/images/default/img-default.png" class="card-img-top rounded-0" alt="..."> #}
+        </div>
         <div class="card-img-overlay">
             <div class="card-title d-flex justify-content-between mx-3">
                 <a href="{{ path('product_show', {'id': product.id}) }}" class="text-secondary mr-3"><i class="fas fa-eye"></i></a>

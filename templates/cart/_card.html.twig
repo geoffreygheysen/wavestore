@@ -1,35 +1,17 @@
-{# <div class="card rounded-0 mb-3">
-  <div class="row no-gutters">
-    <div class="col">
-      <img src="/images/default/img-default.png" class="card-img-top rounded-0" alt="..." height="100%">
+<li class="list-group-item">
+  <div class="row">
+    <div class="col-4">
+      <img src="{{ asset('images/products/' ~ item.product.images[0]) }}" alt="" class="card-img-top rounded-0">
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <div class="d-flex justify-content-between">
-            <h5 class="card-title">{{ item.product.name }}</h5>
-            <a href="#" class="text-danger"><i class="fas fa-trash-alt"></i></a>
-        </div>
-        <p class="card-text">Quantité: {{ item.quantity }}</p>
-        <p class="card-text">Total: {{ item.product.price * item.quantity }} &euro;</p>
+    <div class="col-8">
+      <div class="d-flex justify-content-between">
+          <h5 class="card-title">{{ item.product.name }}</h5>
+          <p>{{ item.product.price }} &euro;</p>
       </div>
+      <p>Quantité: {{ item.quantity }}</p>
+      <p>Taille: L</p>
+      <a href="{{ path('cart_remove', {'id': item.id}) }}" class="text-dark"><i class="fas fa-trash-alt mr-2"></i>Supprimer</a>
     </div>
   </div>
-</div> #}
-
-<li class="list-group-item">
-<div class="row">
-<div class="col-4">
-<img src="/images/default/img-default.png" class="card-img-top rounded-0" alt="...">
-</div>
-<div class="col-8">
-<div class="d-flex justify-content-between">
-    <h5 class="card-title">{{ item.product.name }}</h5>
-    <p>{{ item.product.price }} &euro;</p>
-</div>
-<p>Quantité: {{ item.quantity }}</p>
-<p>Taille: ...</p>
-<a href="{{ path('cart_remove', {'id': item.id}) }}" class="text-dark"><i class="fas fa-trash-alt mr-2"></i>Supprimer</a>
-</div>
-</div>
 </li>
 

@@ -1,8 +1,8 @@
 <div class="col-3 mb-4">
-    <div class="card rounded-0 text-white">
+    <div class="card rounded-0">
         <img src="{{ asset('images/products/' ~ item.product.images[0]) }}" alt="" class="card-img-top rounded-0">
         <div class="card-img-overlay d-flex justify-content-between">
-            <h5 class="card-title">{{ item.product.name }}</h5>
+            <h5 class="card-title text-dark">{{ item.product.name }}</h5>
             <a href="{{ path('whishlist_remove', {'id': item.id}) }}" class="card-link text-danger"><i class="far fa-trash-alt"></i></a>
         </div>
     </div>

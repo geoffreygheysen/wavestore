@@ -3,12 +3,8 @@
 {% block title %}Whishlist | Wave Store{% endblock %}
 
 {% block body %}
-
-<div class="row">
-<h1 class="my-5 ml-5">Favoris</h1>
-</div>
-
 <div class="container">
+<h1 class="my-5">Favoris</h1>
     <div class="row my-5">
         {% if whishlist.items | length > 0 %}
             {% for item in whishlist.items %}

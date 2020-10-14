@@ -53,9 +53,9 @@
         <!-- Links -->
         <h6 class="text-uppercase font-weight-bold text-light">Store's</h6>
         <hr class="accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p><a href="{{ path('product_index') }}" class="text-light">Men</a></p>
-        <p><a href="{{ path('product_index') }}" class="text-light">Women</a></p>
-        <p><a href="{{ path('product_index') }}" class="text-light">Accessories</a></p>
+        <p><a href="{{ path('product_index') }}" class="text-light">Homme</a></p>
+        <p><a href="{{ path('product_index') }}" class="text-light">Femme</a></p>
+        <p><a href="{{ path('product_index') }}" class="text-light">Accessoire</a></p>
         
       </div>
       <!-- Grid column -->
@@ -66,11 +66,11 @@
         <!-- Links -->
         <h6 class="text-uppercase font-weight-bold text-light">Menu</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p><a href="{{ path('about') }}" class="text-light">About us</a></p>
+        <p><a href="{{ path('about') }}" class="text-light">A propos</a></p>
         {% if not app.user %}
-        <p><a href="{{ path('security_registration') }}" class="text-light">Sign in</a></p>
+        <p><a href="{{ path('security_registration') }}" class="text-light">S'inscrire</a></p>
         {% else %}
-        <p><a href="{{ path('user_show', {'id':app.user.id}) }}" class="text-light">Your account</a></p>
+        <p><a href="{{ path('user_show', {'id':app.user.id}) }}" class="text-light">Votre compte</a></p>
         {% endif %}
         <p><a href="#!" class="text-light">RGPD</a></p>
 

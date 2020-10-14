@@ -24,10 +24,10 @@ class PaymentController extends AbstractController
             'payment_method_types' => ['card'],
             'line_items' => [[
               'price_data' => [
-                'currency' => 'usd',
-                'unit_amount' => 2000,
+                'currency' => 'eur',
+                'unit_amount' => 5000,
                 'product_data' => [
-                  'name' => 'Stubborn Attachments',
+                  'name' => 'Votre Panier',
                   'images' => ["https://i.imgur.com/EHyR2nP.png"],
                 ],
               ],
